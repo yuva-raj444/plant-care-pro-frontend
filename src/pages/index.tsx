@@ -602,13 +602,13 @@ const PlantDiseaseWebsite = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400">© 2025 PlantCare Pro. All rights reserved|Yuvaraj</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://x.com/NaanKaanagan" className="text-gray-400 hover:text-white transition-colors">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/yuvaraj-g-53a1a827b/" className="text-gray-400 hover:text-white transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://github.com/yuva-raj444" className="text-gray-400 hover:text-white transition-colors">
               <Github className="w-5 h-5" />
             </a>
           </div>
