@@ -25,23 +25,37 @@ const PlantDiseaseWebsite = () => {
     }
   };
 
-  const analyzeImage = async () => {
-    if (!selectedImage) return;
-    
-    setIsAnalyzing(true);
-    // Simulate API call to Gemini
-    setTimeout(() => {
-      setAnalysisResult({
-        disease: "Tomato Late Blight",
-        confidence: 92,
-        severity: "High",
-        description: "Late blight is a serious fungal disease that affects tomato plants, causing dark spots on leaves and fruit.",
-        treatment: "Apply copper-based fungicide immediately. Remove affected leaves and improve air circulation.",
-        prevention: "Ensure proper spacing between plants, avoid overhead watering, and apply preventive fungicide sprays."
-      });
-      setIsAnalyzing(false);
-    }, 3000);
-  };
+const analyzeImage = async () => {
+  if (!selectedImage) return;
+
+  setIsAnalyzing(true);
+
+  try {
+    const base64 = selectedImage.split(',')[1];
+
+    const response = await fetch('/api/diagnose', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imageBase64: base64 }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setAnalysisResult(data);
+    } else {
+      console.error(data);
+      alert("Diagnosis failed: " + data.error);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("An error occurred during diagnosis.");
+  } finally {
+    setIsAnalyzing(false);
+  }
+};
 
   const Navigation = () => (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-lg">
